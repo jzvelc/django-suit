@@ -239,7 +239,6 @@ def wrap_as_input_group(s, append=''):
 def adjust_widget(field):
     widget = field.field.widget
     if isinstance(widget, ForeignKeyRawIdWidget):
-        field = field.decode('utf-8')
         field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
         field = field.replace('<a', '<span class="input-group-btn"><a')
         field = field.replace('</a>', '<span class="glyphicon glyphicon-search"'
@@ -260,7 +259,6 @@ def adjust_widget(field):
         return mark_safe(field)
 
     elif isinstance(widget, RelatedFieldWidgetWrapper):
-        field = field.decode('utf-8')
         # field = field.replace('RawIdAdminField', 'RawIdAdminField form-control')
         field = field.replace('<a', '<span class="input-group-btn"><a')
         field = field.replace('</a>', '<span class="glyphicon glyphicon-plus-sign color-success"'
